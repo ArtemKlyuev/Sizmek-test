@@ -1,0 +1,198 @@
+html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.controls {
+    position: absolute;
+    z-index: 1;
+    top: 90%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    color: white;
+}
+
+.controls__item {
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.pause {
+    transform: rotate(90deg);
+}
+
+.earth-direction_anticlockwise,
+.earth-direction_clockwise {
+    color: blue;
+}
+
+.toggle-earth-visibility {
+    position: relative;
+    width: 55px;
+    height: 55px;
+    background: blue;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.toggle-earth-visibility_true::after {
+    content: '';
+}
+
+.toggle-earth-visibility_false::after {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    font-size: 90px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    text-align: center;
+}
+
+.toggle-moon-visibility {
+    position: relative;
+    width: 55px;
+    height: 55px;
+    background: white;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.toggle-moon-visibility_true::after {
+    content: '';
+}
+
+.toggle-moon-visibility_false::after {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    font-size: 90px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    color: black;
+    text-align: center;
+}
+
+.help {
+    display: none;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    background-color: #8e7e6496;
+    color: white;
+    font-size: 50px;
+}
+
+.help__list {
+    list-style-type: none;
+}
+
+.help__item {
+    margin-bottom: 30px;
+}
+
+.help__item:nth-child(2) {
+    display: inline-block;
+}
+
+.help__item.play::after {
+    content: '  \2014  Cтарт';
+    font-size: 25px;
+}
+
+.help__item.pause::after {
+    content: '  \2014  Пауза';
+    position: absolute;
+    top: -112px;
+    left: -70px;
+    width: 170px;
+    transform: rotate(-90deg);
+    font-size: 25px;
+}
+
+.help__item.earth-direction_clockwise::after {
+    content: '  \2014  Движение синей окружности по часовой стрелке';
+    font-size: 25px;
+    color: white;
+}
+
+.help__item.earth-direction_anticlockwise::after {
+    content: '  \2014  Движение синей окружности против часовой стрелки';
+    font-size: 25px;
+    color: white;
+}
+
+.help__item.toggle-earth-visibility::after {
+    content: '  \2014  Показать/скрыть синюю и белую окружность';
+    position: absolute;
+    top: 10px;
+    left: 84px;
+    width: 560px;
+    font-size: 25px;
+    color: white;
+}
+
+.help__item.moon-direction_clockwise::after {
+    content: '  \2014  Движение белой окружности по часовой стрелке';
+    font-size: 25px;
+    color: white;
+}
+
+.help__item.moon-direction_anticlockwise::after {
+    content: '  \2014  Движение белой окружности против часовой стрелки';
+    font-size: 25px;
+    color: white;
+}
+
+.help__item.toggle-moon-visibility::after {
+    content: '  \2014  Показать/скрыть белую окружность';
+    position: absolute;
+    top: 10px;
+    left: 84px;
+    width: 560px;
+    font-size: 25px;
+    color: white;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 32px;
+    transform: rotate(45deg);
+    font-size: 75px;
+    cursor: pointer;
+}
+
+.js-visible {
+    display: block;
+}
+
+.js-d-none {
+    display: none;
+}
