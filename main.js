@@ -169,10 +169,15 @@ class Circle extends Figure {
 };
 
 /**
- * Класс с методами для управления анимацией
+ * Класс с методами для управления анимацией. Используется паттерн синглтон
  */
 class Controls {
     constructor() {
+
+        if (!Controls.instance) {
+            Controls.instance = this;
+        }
+
         this._toggleMoonVisibility = document.querySelector('.controls .toggle-moon-visibility');
 
         this._animationState = {
@@ -210,6 +215,8 @@ class Controls {
                 }
             }
         };
+
+        return Controls.instance;
     }
 
     // Запуск интервала и анимации
@@ -318,6 +325,8 @@ class Controls {
 
 const controls = new Controls();
 
+Object.freeze(controls);
+
 // Создание экземпляров класса Circle
 const sun = new Circle(canvas.width / 2, canvas.height / 2, canvas.width / 15, 'yellow');
 const earth = new Circle(null, null, sun.radius / 5, 'blue');
@@ -396,13 +405,13 @@ let timer = setInterval(start, 0);
     // Показать модальное окно с подсказками
     const enableHelp = () => {
         helpModal.classList.add('js-visible');
-        controls.togglePlayPause();
+        controls.pause();
     }
 
     // Скрыть модальное окно с подсказками
     const closeHelp = () => {
         helpModal.classList.remove('js-visible');
-        controls.togglePlayPause();
+        controls.play();
     };
 
     // Проверка пропорций экрана
